@@ -4,7 +4,8 @@
   "description": "Meadowlark Travel – Node &amp; Express project",
   "main": "meadowlark.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node meadowlark.js",
+    "lint": "./node_modules/.bin/eslint .; exit 0"
   },
   "repository": {
     "type": "git",
