@@ -1,31 +1,43 @@
 var express = require('express');
 
 var app = express();
+var handlebars = require('express-handlebars')
+    .create({ defaultLayout: 'main' });
 
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 3000);
 
+app.use(express.static(__dirname + '/public'));
+
+var fortuneCookies = [
+    'Conquer your fears or they will conquer you.',
+    'Rivers need springs.',
+    'Do not fear what you don\'t know.',
+    'You will have a pleasant surprise.',
+    'Whenever possible, keep it simple.',
+];
+
 app.get('/', function(req, res) {
-    res.type('text/plain');
-    res.send('Meadowlark Travel');
+    res.render('home');
 });
 
 app.get('/about', function (req, res) {
-    res.type('text/plain');
-    res.send('About Meadowlark Travel');
+    var randomFortune = fortuneCookies[Math.floor(Math.random() * fortuneCookies.length)];
+    res.render('about', { fortune: randomFortune });
 });
 
 // 404 page
 app.use(function(req, res) {
-    res.type('text/plain');
     res.status(404);
-    res.send('404 - Not found');
+    res.render('404');
 });
 
 // 500 page
-app.use(function(req, res) {
-    res.type('text/plain');
+app.use(function(err, req, res) {
+    console.error(err.stack);
     res.status(500);
-    res.send('500 – Server error');
+    res.render('500');
 });
 
 app.listen(app.get('port'), function() {
