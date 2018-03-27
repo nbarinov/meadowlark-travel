@@ -1,0 +1,22 @@
+{
+  "name": "meadowlark-travel",
+  "version": "1.0.0",
+  "description": "Meadowlark Travel – Node &amp; Express project",
+  "main": "meadowlark.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbarinov/meadowlark-travel.git"
+  },
+  "author": "Nikita Barinov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nbarinov/meadowlark-travel/issues"
+  },
+  "homepage": "https://github.com/nbarinov/meadowlark-travel#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
