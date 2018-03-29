@@ -1,1 +1,4 @@
 /node_modules
+public/vendor
+public/qa
+qa/

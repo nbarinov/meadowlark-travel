@@ -8,6 +8,9 @@
     "parserOptions": {
         "sourceType": "module"
     },
+    "plugins": [
+        "mocha"
+    ],
     "rules": {
         "indent": [
             "error",
@@ -28,7 +31,8 @@
             "error",
             "always"
         ],
-        "no-console": 0
+        "no-console": 0,
+        "mocha/no-exclusive-tests": "error"
     },
     "globals": {
         "__dirname": true,
