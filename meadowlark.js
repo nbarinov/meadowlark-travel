@@ -40,6 +40,16 @@ app.get('/tours/request-group-rate', function(req, res) {
     res.render('tours/request-group-rate');
 });
 
+app.get('/headers', function(req, res) {
+    res.set('Content-type', 'text/plain');
+
+    var s = '';
+    for(var name in req.headers)
+        s += name + ': ' + req.headers[name] + '\n';
+    
+    res.send(s);
+});
+
 // 404 page
 app.use(function(req, res) {
     res.status(404);
