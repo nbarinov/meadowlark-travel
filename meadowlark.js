@@ -2,7 +2,20 @@ var express = require('express');
 
 var app = express();
 var handlebars = require('express-handlebars')
-    .create({ defaultLayout: 'main' });
+    .create({ 
+        defaultLayout: 'main', 
+        helpers: {
+            section: function(name, options) {
+                if(!this._sections) {
+                    this._sections = {};
+                }
+
+                this._sections[name] = options.fn(this);
+
+                return null;
+            }
+        }
+    });
 
 var fortune = require('./lib/fortune');
 var weather = require('./lib/weather');
