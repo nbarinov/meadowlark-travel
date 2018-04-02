@@ -73,6 +73,22 @@ app.get('/headers', function(req, res) {
     res.send(s);
 });
 
+app.get('/thank-you', function (req, res) {
+    res.render('thank-you');
+});
+
+app.get('/newslatter', function(req, res) {
+    res.render('newslatter', { csrf: 'CSRF token goes here' });
+});
+
+app.post('/process', function(req, res) {
+    if(req.xhr || req.accepts('json.html') === 'json') {
+        res.send({ success: true });
+    } else {
+        res.redirect(303, '/thank-you');
+    }
+});
+
 // 404 page
 app.use(function(req, res) {
     res.status(404);
