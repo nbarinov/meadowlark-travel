@@ -1,0 +1,17 @@
+<form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="/contest/vacation-photo/{{year}}/{{month}}">
+    <div class="form-group">
+        <label for="fieldName">Name</label>
+        <input type="text" class="form-control" id="fieldName" name="name">
+    </div>
+    <div class="form-group">
+        <label for="fieldEmail">Email</label>
+        <input type="email" class="form-control" required id="fieldEmail" name="email">
+    </div>
+    <div class="form-group">
+        <label for="fieldPhoto">Vacation photo</label>
+        <input type="file" class="form-control" required accept="image/*" id="fieldPhoto" data-url="/upload" name="photo">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
