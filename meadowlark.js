@@ -21,6 +21,8 @@ var formidable = require('formidable');
 var fortune = require('./lib/fortune');
 var weather = require('./lib/weather');
 var credentials = require('./credentials');
+var constants = require('./source/constants');
+var NewslatterSignUp = require('./source/components/NewslatterSignUp');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -94,19 +96,11 @@ app.get('/newslatter', function(req, res) {
     res.render('newslatter', { csrf: 'CSRF token goes here' });
 });
 
-function NewslatterSignUp() {}
-
-NewslatterSignUp.prototype.save = function(cb) {
-    cb();
-};
-
-var VALID_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
-
 app.post('/newslatter', function(req, res) {
     var name = req.body.name || '';
     var email = req.body.email || '';
 
-    if(!email.match(VALID_EMAIL_REGEX)) {
+    if(!email.match(constants.VALID_EMAIL_REGEX)) {
         if(req.xhr) {
             return res.json({
                 error: 'Invalid name email address.'
