@@ -2,4 +2,10 @@
     <img src="/images/logo.png" alt="Meadowlark Travel Logo">
     <h1>Welcome to Meadowlark Travel</h1>
 </header>
+{{#if flash}}
+    <div class="alert alert--{{flash.type}}">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>{{flash.intro}}</strong> {{{flash.message}}}
+    </div>
+{{/if}}
 {{> weather}}
